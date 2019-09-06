@@ -1,0 +1,106 @@
+
+.grid-filter-wrapper {
+    padding: 10px 15px 5px 15px;
+    width: 350px;
+}
+
+.filter-input {
+    position: relative;
+
+    input {
+        padding-right: 35px;
+    }
+
+    i.fa {
+        position: absolute;
+        color: #888;
+        right: 10px;
+        top: 7px;
+    }
+}
+
+.options-config {
+    padding: 10px 0px 10px 5px;
+    border-top: 1px solid #e6e6e6;
+
+    .form-check-label {
+        cursor: pointer;
+    }
+    &:hover {
+        background-color: rgb(245, 245, 245);
+    }
+}
+
+.filter {
+    border-top: 1px solid #e6e6e6;
+
+    .filter-title {
+        color: #5a5a5a;
+        font-size: 15px;
+        line-height: 20px;
+        position: relative;
+        font-weight: bold;
+
+        .clear-filter {
+            position: absolute;
+            top: 14px;
+            right: 6px;
+            font-weight: bold;
+            font-size: 12px;
+        }
+        
+        .aux-wrapper {
+            display: block;
+            cursor: pointer;
+            padding: 10px 0px 10px 5px;
+            &:hover { background-color: rgb(245, 245, 245); }
+        }
+
+        i.fa { padding-right: 5px; }
+    }
+
+    .filter-content {
+        margin-top: 0px;
+        padding: 0px 5px;
+    }
+
+    .monthYear {
+        margin-bottom: 10px ;
+    }
+
+    &.filter {
+
+        .options-wrapper {
+            margin-top: 12px;
+            margin-bottom: 20px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+    
+        .option {
+            padding: 1px 10px;
+            margin-right: 2px;
+            line-height: 24px;
+            font-size: 13px;
+            color: #444;
+            border: 1px solid #d8d8d8;
+            border-radius: 13px;
+            font-weight: bold;
+            display: block;
+            cursor: pointer;
+            
+            &.selected {
+                background-color: #f1f1f1;
+                color: #ffffff;
+            }
+        }
+
+    }
+}
+
+.search-btn-filter {
+    width: 100%;
+    margin-top: 10px;
+    i.fa { padding-right:  10px; }
+}
+

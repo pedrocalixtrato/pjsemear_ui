@@ -1,0 +1,82 @@
+
+<div class="content-wrapper">
+  <div class="card-wrapper pacto-shadow">
+    <div class="content">
+      <form>
+        <div class="row">
+          <div class="col-3">
+            <sma-input
+              label="Cep"
+              [control]="formGroup.get('cep')"
+              mensagem="Insira o cep"
+              placeholder="Cep"
+            >
+            </sma-input>
+          </div>
+          <div class="col-9">
+            <sma-input
+              label="Rua"
+              [control]="formGroup.get('logradouro')"
+              mensagem="Insira os dados do lograouro"
+              placeholder="Rua"
+            >
+            </sma-input>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-9">
+            <sma-input
+              label="Complemento"
+              [control]="formGroup.get('complemento')"
+              placeholder="Complemento"
+            >
+            </sma-input>
+          </div>
+          <div class="col-3">
+            <sma-input
+              label="Numero"
+              [control]="formGroup.get('numero')"
+              placeholder="Numero"
+            >
+            </sma-input>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <sma-input
+              label="Bairro"
+              [control]="formGroup.get('bairro')"
+              placeholder="Bairro"
+            >
+            </sma-input>
+          </div>
+          <div class="col-3">
+            <sma-input
+              label="Cidade"
+              [control]="formGroup.get('cidade')"
+              placeholder="Cidade"
+            >
+            </sma-input>
+          </div>
+          <div class="col-3">
+            <sma-input
+              label="Estado"
+              [control]="formGroup.get('estado')"
+              placeholder="Estado"
+            >
+            </sma-input>
+          </div>
+        </div>
+      </form>
+<!--      {{auth.jwtPayLoad?.nome}}-->
+      <div class="actions">
+        <button type="button" (click)="cancelHandler()" class="btn btn-primary"> Cancelar
+        </button>
+        <button type="button" (click)="saveHandler()" class="btn btn-primary"> Salvar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<span #criarEnderecoSuccess [hidden]="true"> Endereco criado com sucesso. </span>

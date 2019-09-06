@@ -1,0 +1,63 @@
+
+
+<table class='table'>
+  <thead>
+    <tr>
+      <th *ngFor="let column of visibleColumns" [ngClass]="{'sortable': isSortable(column.nome)}">
+        <span (click)="sortClick(column)"  *ngIf="column.mostrarTitulo">
+          <ng-container *ngTemplateOutlet="column.titulo"></ng-container>
+          <i class="{{ getSortIconClass(column.nome) }}" *ngIf="isSortable(column.nome)"></i>
+        </span>
+      </th>
+      <th *ngIf="dataGridConfig.actions.length" class="action-column" i18n="@@component-relatorio:acoes:table"> Ações </th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr *ngFor="let row of dados; let lastRow = last; let rowIndex = index" id="element-{{rowIndex}}" [ngClass]="{
+      'total-row': dataGridConfig.totalRow && lastRow,
+      'row-clickable': dataGridConfig.rowClick}"
+      (click)="rowClickHandler(row, $event)"
+      >
+
+      <!-- Data columns -->
+      <td *ngFor="let column of visibleColumns; let firstColumn = first">
+
+        <ng-container [ngSwitch]="(dataGridConfig.totalRow && firstColumn && lastRow)">
+
+          <!-- TOTAL COLUMN -->
+          <ng-container *ngSwitchCase="true">
+            <span> Total </span>
+          </ng-container>
+
+          <!-- DATA COLUMNS -->
+          <ng-container *ngSwitchCase="false">
+            <span (click)="columnCellClickHandler(row, column)"  class="column-cell" [ngClass]="{'hover-cell': column.cellPointerCursor}">
+              <ng-container *ngIf="!column.celula && column.campo"> {{ row[column.campo] }} </ng-container>
+              <ng-container *ngIf="column.celula">
+                <ng-container *ngTemplateOutlet="column.celula; context: {item: row}"></ng-container>
+              </ng-container>
+            </span>
+          </ng-container>
+
+        </ng-container>
+
+      </td>
+
+       <!--Action column -->
+      <td *ngIf="dataGridConfig.actions.length" class="action-cell">
+        <i *ngFor="let icon of rawDataIcons[rowIndex]" class="{{ icon.iconClass }}" title="{{icon.tooltipText}}" id="element-{{rowIndex}}-{{icon.nome.toLowerCase()}}" (click)="iconClickHandler(row, icon)"></i>
+      </td>
+
+    </tr>
+  </tbody>
+</table>
+
+<!--<div class="empty-state" *ngIf="dados.length === 0 && !loading" i18n="@@component-relatorio:sem-dados-disponiveis"> Sem dados disponíveis. </div>-->
+
+
+
+
+
+
+

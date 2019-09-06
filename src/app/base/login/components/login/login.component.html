@@ -1,0 +1,23 @@
+<div class="container-login">
+  <div class="box">
+    <sma-input
+      [label]="'Usuario'"
+      [control]="formGroup.get('usuario')"
+      [placeholder]="'Digite seu usuario'"
+      >
+    </sma-input>
+    <sma-input
+      [type]="'password'"
+      [control]="formGroup.get('senha')"
+      [label]="'Senha'"
+      [placeholder]="'Digite sua senha'"
+    >
+    </sma-input>
+    <div class="actions">
+      <button type="button" (click)="login(); formGroup.get('senha').setValue('')" class="btn btn-primary"> Login
+      </button>
+    </div>
+    <div >{{auth.jwtPayLoad | json}}</div>
+
+  </div>
+</div>

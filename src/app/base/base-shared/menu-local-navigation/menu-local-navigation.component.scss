@@ -1,0 +1,166 @@
+
+:host {
+  z-index: 10;
+}
+
+.pp-local-nav-wrapper {
+  height: calc(100vh - 95px);
+  background-color: #17191a;
+  width: 200px;
+}
+
+.current-modulo {
+  background-color: #17191a;
+  box-shadow: -8px 0 42px 0 rgba(42, 34, 64, 0.14);
+  color: #ffffff;
+  display: flex;
+  height: 56px;
+  padding-left: 30px;
+  align-items: center;
+
+  .pct {
+    display: block;
+    font-size: 24px;
+  }
+
+  .module-name {
+    line-height: 40px;
+    padding-left: 10px;
+    font-size: 16px;
+  }
+}
+
+.menus {
+  color: #ffffff;
+}
+
+.menu {
+  position: relative;
+}
+
+.menu-name {
+  display: flex;
+  align-items: center;
+  line-height: 35px;
+  height: 56px;
+  color: #ffffff;
+  cursor: pointer;
+  padding: 10px 30px;
+  width: 100%;
+  border-bottom: 1px solid #000000;
+
+  .img-icon-aux {
+    display: none;
+    width: 44px;
+    position: relative;
+    text-align: center;
+  }
+
+  &:hover {
+    background-color: #0d4d73;
+  }
+
+  &.opened {
+    background-color: #0c4f78;
+  }
+
+  .pct.main-icon {
+    display: none;
+    font-size: 24px;
+  }
+
+  .open-close { font-size: 18px; }
+
+  img {
+    display: none;
+    margin: 0px auto;
+  }
+
+  .text-wrapper {
+    display: flex;
+    width: 100%;
+    font-size: 14px;
+    color: #fff;
+    align-items: center;
+
+    .text { flex-grow: 1; }
+
+    .icon-wrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+}
+
+.second-level-laptop-wrapper  {
+  display: none;
+  z-index: 10;
+  width: 200px;
+  position: absolute;
+  left: 100px;
+  top: 0px;
+  background-color: #00426b;
+}
+
+.submenu {
+  line-height: 17px;
+  display: block;
+  color: #fff;
+  font-size: 14px;
+  font-weight: normal;
+  padding: 15px 10px 15px 46px;
+
+  &:last-child {
+  }
+
+  &:hover {
+    background-color: #0d4d73;
+  }
+
+}
+
+@media (max-width: 1440px) {
+
+  .current-modulo {
+    justify-content: center;
+    padding-left: 0px;
+  }
+
+  .submenu {
+    padding: 0px 0px 0px 20px;
+    line-height: 56px;
+  }
+
+  .second-level-desktop-wrapper {
+    display: none;
+  }
+
+  .second-level-laptop-wrapper {
+    display: block;
+  }
+
+  .pp-local-nav-wrapper {
+    width: 100px;
+  }
+
+  .menu-name {
+    .pct.main-icon { display: block; }
+
+    .text-wrapper { display: none; }
+
+    img { display: block; }
+
+    .img-icon-aux { display: block; }
+
+    justify-content: center;
+
+    &.opened, &:hover {
+      background-color: initial;
+    }
+  }
+
+  .module-name { display: none; }
+
+}
+

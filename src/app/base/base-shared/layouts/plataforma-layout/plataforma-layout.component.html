@@ -1,0 +1,24 @@
+
+<ng-container>
+<!--    <app-plataform-layout-top-->
+<!--        [layoutType]="layoutType"-->
+<!--        *ngIf="!fullscreen"-->
+<!--    ></app-plataform-layout-top>-->
+  <sma-nav-bar>
+  </sma-nav-bar>
+    
+    <div class="pacto-body-row">
+        <sma-menu-local-navigation
+
+        ></sma-menu-local-navigation>
+        <div
+            appCatSmoothScroll [maxHeight]="scrollMaxHeight"
+            class="pacto-content-wrapper-aux" [ngClass]="{'fullscreen': fullscreen}">
+            <div class="pacto-content-wrapper" [ngClass]="{'fullscreen': fullscreen}">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+</ng-container>
+
+

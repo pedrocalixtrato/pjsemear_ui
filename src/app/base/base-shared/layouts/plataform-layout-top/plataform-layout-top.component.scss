@@ -1,0 +1,125 @@
+@import "~src/assets/scss/semear/plataforma-import.scss";
+
+.header-container {
+    border-bottom: 1px solid $cinza02;
+    background-color: #fff;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    height: 95px;
+    position: relative;
+}
+
+.header-left-section {
+    background-color: #00426b;
+    height: 95px;
+    width: 200px;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 0px;
+
+    .pct-logo {
+        cursor: pointer;
+        width: 46px;
+        height: 46px;
+    }
+}
+
+.header-center  {
+    @include plataformaConteudoLargura();
+
+    &.expanded {
+        width: calc(100vw - 260px);
+    }
+
+    .pct-logo {
+        cursor: pointer;
+        width: 46px;
+        height: 46px;
+        margin-right: 15px;
+    }
+
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+
+    .meus-modulos {
+        
+        .text {
+            cursor: pointer;
+            display: flex;
+            font-family: Europa;
+            font-weight: bold;
+            font-size: 13px;
+            line-height: 22px;
+            text-transform: uppercase;
+            color: #acb1b5;
+
+            i { 
+                color: #00426b;
+                font-size: 20px;
+            }
+
+            span { padding-left: 5px; }
+        }
+
+    }
+}
+
+
+
+// pacto-plataforma-global-menu {
+//     position: fixed;
+//     top: 95px;
+//     right: 0px;
+//     left: 200px;
+
+//     @media (max-width: $plataforma-breakpoint-large) {
+//         left: 100px;
+//     }
+
+//     &.full-width {
+//         left: 0px;
+//     }
+//     &.expanded {
+//         left: 100px;
+//     }
+// }
+
+
+pacto-global-search, pacto-user-menu, pacto-quick-actions {
+    display: block;
+}
+
+pacto-global-search {
+    flex-grow: 1;
+}
+
+@media (max-width: $plataforma-breakpoint-large) {
+    .header-left-section {
+        width: 100px;
+    }
+    .header-center {
+        width: calc(100vw - 260px);
+    }
+}
+
+@media(max-width: $plataforma-breakpoint-medium) {
+    pacto-quick-actions {
+        display: none;
+    }
+    .meus-modulos {
+        flex-grow: 1;
+    }        
+}
+
+@media (max-width: $plataforma-breakpoint-small) {
+    pacto-global-search {
+        display: none;
+    }
+    .meus-modulos {
+        flex-grow: 1;
+    }
+}

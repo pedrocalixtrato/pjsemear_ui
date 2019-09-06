@@ -1,0 +1,23 @@
+@import 'src/assets/scss/variable.scss';
+@import 'src/assets/scss/functions.scss';
+
+ngb-pagination {
+
+    &.module-crossfit .page-item.active .page-link {
+        background-color: primaryColor(pacto, base);
+        border-color: primaryColor(pacto, base);
+        &:hover { background-color: primaryColor(pacto, base); }
+    }
+    &.module-treino .page-item.active .page-link {
+        background-color: primaryColor(pacto, base);
+        border-color: primaryColor(pacto, base);
+        &:hover { background-color: primaryColor(pacto, base);  }
+    }
+    &.module-avaliacao .page-item.active .page-link {
+        background-color: primaryColor(pacto, base);
+        border-color: primaryColor(pacto, base);
+        &:hover { background-color: primaryColor(pacto, base);  }
+    }
+
+
+}

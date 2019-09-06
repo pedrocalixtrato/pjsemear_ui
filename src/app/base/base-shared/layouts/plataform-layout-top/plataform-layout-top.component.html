@@ -1,0 +1,34 @@
+
+
+<div class="header-container">
+  
+  <div class="header-left-section" *ngIf="normal">
+    <img class="pct-logo" src="assets/images/logo-icon-pacto-branca.svg" (click)="logoClickHandler()">
+  </div>
+
+  <div class="header-center" [ngClass]="{
+    'expanded': expanded
+  }">
+    <img class="pct-logo" *ngIf="fullWidth" src="assets/images/logo-icon-pacto-azul.svg" (click)="logoClickHandler()">
+    <div class="meus-modulos">
+      <div class="text" (click)="toggleMenu()">
+        <i class="pct pct-grid"></i>
+        <span i18n="@@plataforma-global-menu:meus-modulos"> Meus módulos  </span>
+      </div>
+<!--      <pacto-plataforma-global-menu-->
+<!--        [layoutType]="layoutType"-->
+<!--        (close)="toggleMenu()" *ngIf="globalMenuOpened"></pacto-plataforma-global-menu>-->
+    </div>
+    
+<!--    <pacto-global-search></pacto-global-search>-->
+<!--    <pacto-plataforma-link-adm *ngIf="integracaoZW"></pacto-plataforma-link-adm>-->
+<!--    <pacto-quick-actions *ngIf="!integracaoZW"></pacto-quick-actions>-->
+
+<!--    <pacto-plataforma-user-menu></pacto-plataforma-user-menu>-->
+  </div>
+
+</div>
+
+
+
+

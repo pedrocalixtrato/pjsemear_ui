@@ -1,0 +1,94 @@
+<ng-container>
+  <div class="pp-local-nav-wrapper">
+
+    <div class="current-modulo">
+
+      <ng-container>
+        <div class="module-name" i18n="@@menu:treino"> Treino</div>
+      </ng-container>
+
+
+    </div>
+
+    <div class="menus local-navigation-menus">
+
+      <div class="menu" *ngFor="let menu of menus">
+
+        <!-- MENU WITHOUT SUBMENUS -->
+        <a class="menu-name" *ngIf="menu.link" [routerLink]="menu.link">
+          <div class="img-icon-aux">
+            <i *ngIf="menu.icon" class="main-icon {{ menu.icon }}"></i>
+            <img *ngIf="!menu.icon" src="{{ menu.iconImage }}">
+
+          </div>
+          <span class="text-wrapper">
+          <div class="text">
+            <ng-container *ngTemplateOutlet="tradutor; context: {id: menu.menuId}"></ng-container>
+          </div>
+        </span>
+        </a>
+
+        <!-- MENU WITH SUBMENUS -->
+        <a class="menu-name" *ngIf="!menu.link"
+           [ngClass]="{opened: openedMenu === menu.menuId}"
+           (click)="menuClickHandler(menu, $event)">
+
+        <div class="img-icon-aux">
+            <i *ngIf="menu.icon" class="main-icon {{ menu.icon }}"></i>
+            <img *ngIf="!menu.icon" src="{{ menu.iconImage }}">
+
+          </div>
+          <div class="text-wrapper">
+            <div class="text">
+              <ng-container *ngTemplateOutlet="tradutor; context: {id: menu.menuId}"></ng-container>
+            </div>
+            <div class="icon-wrapper">
+              <i class="fa fa-chevron-right" *ngIf="openedMenu !== menu.menuId"></i>
+              <i class="fa fa-chevron-down" *ngIf="openedMenu === menu.menuId"></i>
+            </div>
+          </div>
+        </a>
+
+        <!-- DESKTOP -->
+        <div class="second-level-desktop-wrapper" *ngIf="openedMenu === menu.menuId">
+          <a class="submenu" [routerLink]="submenu.link"
+             *ngFor="let submenu of menu.submenus">
+            <ng-container *ngTemplateOutlet="tradutor; context: {id: submenu.submenuId}"></ng-container>
+          </a>
+        </div>
+
+        <!-- LAPTOP -->
+        <div class="second-level-laptop-wrapper" *ngIf="openedMenu === menu.menuId">
+          <a class="submenu" [routerLink]="submenu.link"
+             *ngFor="let submenu of menu.submenus">
+            <ng-container *ngTemplateOutlet="tradutor; context: {id: submenu.submenuId}"></ng-container>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+
+<ng-template #tradutor let-id="id">
+  <ng-container [ngSwitch]="id">
+    <span *ngSwitchCase="'dashboard'" i18n="@@menu:indicadores"> Indicadores </span>
+    <span *ngSwitchCase="'montagem-treino'" i18n="@@treino:montagem-treino:menu"> Treinos </span>
+    <span *ngSwitchCase="'aula-cheia'" i18n="@@crud-aulas:menu:aula-cheia"> Aula Cheia </span>
+    <span *ngSwitchCase="'aulas'" i18n="@@crud-aulas:menu"> Aulas </span>
+    <span *ngSwitchCase="'modalidade'" i18n="@@crud-modalidades:menu"> Modalidades </span>
+    <span *ngSwitchCase="'ambiente'" i18n="@@crud-ambientes:menu"> Ambientes </span>
+    <span *ngSwitchCase="'relatorios'" i18n="@@relatorio:menu"> Relatórios </span>
+    <span *ngSwitchCase="'carteira'" i18n="@@relatorio-carteira-professores:menu"> Carteira </span>
+    <span *ngSwitchCase="'atividade-professores'" i18n="@@relatorio-atividade-professores:menu"> Atividades dos Professores </span>
+    <span *ngSwitchCase="'cadastros'" i18n="@@navigation-menu:cadastros"> Cadastros </span>
+    <span *ngSwitchCase="'alunos'" > Alunos </span>
+    <span *ngSwitchCase="'enderecos'" > Endereços </span>
+    <span *ngSwitchCase="'professores'" > Professores </span>
+    <span *ngSwitchCase="'colaboradores'" i18n="@@crud:grupos-musculares:menu"> Colaboradores</span>
+
+  </ng-container>
+</ng-template>
+
+

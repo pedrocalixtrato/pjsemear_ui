@@ -1,0 +1,124 @@
+
+<ng-container *ngIf="table">
+        
+        <div class="pacto-table-title-block" pactoModuleClass>
+            <div class="marker"></div>
+            
+            <div class="title-aux-wrapper">
+                <div class="table-title">
+                    <ng-container *ngTemplateOutlet="tableTitle"></ng-container>
+                </div>
+                <div class="table-description" *ngIf="tableDescription">
+                    <ng-container *ngTemplateOutlet="tableDescription"></ng-container>        
+                </div>
+            </div>
+
+
+            <div class="search">
+                <div *ngIf="table.quickSearch">
+                    <input
+                        #quickSearch
+                        placeholder="Busca rápida..."
+                        i18n-placeholder="@@component-relatorio:busca-rapida:placeholder"
+                        [formControl]="quickSearchControl"
+                        class="form-control"
+                        id="input-busca-rapida"
+                        type="text">
+                        <i class="fa fa-search"></i>
+                </div>
+            </div>
+
+
+            <div class="actions">
+                <div class="filter-wrapper" *ngIf="table.showFilters && filterConfig">
+                    <div ngbDropdown #filterDropdown="ngbDropdown" class="d-inline-block" [autoClose]="false" [placement]="'bottom-right'">
+                        <button #filterToggleButton class="btn btn-primary" pactoModuleClass id="filtros-dropdown" ngbDropdownToggle>
+                            <i class="fa fa-filter"></i> 
+                        </button>
+                        
+                        <div ngbDropdownMenu aria-labelledby="filtros-dropdown">
+                            <sma-data-grid-filter
+                                #dataGridFilter
+                                [config]="filterConfig"
+                                [columnsConfig]="table.columns"
+                                (filter)="filterHandler($event)"
+                                (configUpdate)="alterfilterConfigUpdate($event)"
+                            ></sma-data-grid-filter>
+                        </div>
+                    </div>
+                </div>                
+
+                <div ngbDropdown class="d-inline-block" *ngIf="table.exportButton" class="export-wrapper" [placement]="'bottom-right'">
+                    <button class="btn btn-secondary" pactoModuleClass id="relatorio-exportar" ngbDropdownToggle> 
+                    <i class="fa fa-download"></i>
+                    </button>
+                    <div ngbDropdownMenu aria-labelledby="relatorio-exportar" class="exportar-dropdown">
+                        <div class="item"> PDF </div>
+                        <div class="item"> XLS </div>
+                        <div class="item"> XML </div>
+                    </div>
+                </div>
+
+                <div>
+                    <button 
+                        *ngIf="table.buttons"
+                        (click)="btnCLickHandler()"
+                        id="{{table.buttons.id}}"
+                        class="btn btn-primary novo-botao" >
+                        <ng-container *ngTemplateOutlet="table.buttons.conteudo"></ng-container>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="table-content">
+            
+            <sma-relatorio-renderer
+                [dataGridConfig]="table"
+                [loading]="dataFetchLoading"
+                [data]="rawData"
+                [rawDataIcons]="rawDataIcons"
+                (sort)="sortUpdateHandler($event)"
+                (cellClick)="cellClickHandler($event)"
+                (iconClick)="iconClick.emit($event)"
+                (rowClick)="rowClick.emit($event)"
+            ></sma-relatorio-renderer>
+
+            <div class="simple-total-row" *ngIf="table.showSimpleTotalCount && !dataFetchLoading">
+                {{ table.pagination ? data.totalElements : rawData.length }}
+                <span> items </span>
+            </div>
+
+            <div class="footer-row" *ngIf="table.pagination">
+                <ng-container *ngIf="!dataFetchLoading && rawData?.length">
+                    <ngb-pagination
+                        pactoModuleClass
+                        [collectionSize]="data.totalElements"
+                        (pageChange)="pageChangeHandler($event)"
+                        [(page)]="ngbPage"
+                        [size]="'sm'"
+                        [pageSize]="data.size"
+                        [ellipses]="false"
+                        [boundaryLinks]="true"
+                        [maxSize]="7"
+                        class="d-flex justify-content-end"
+                    ></ngb-pagination>
+                    <div class="total-values">
+                        <span i18n="@@component-relatorio:mostrando"> Mostrando </span>
+                        <span class="value"> {{ data.content.length }} </span>
+                        <span i18n="@@component-relatorio:de"> de </span>
+                        <span class="value"> {{ data.totalElements }} </span>
+                    </div>                    
+                </ng-container>
+            </div>            
+            
+        </div>
+</ng-container>
+        
+        
+
+
+
+
+
+

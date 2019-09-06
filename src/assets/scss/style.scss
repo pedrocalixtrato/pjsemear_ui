@@ -1,0 +1,24 @@
+
+/**
+ * Table Of Content
+ *
+ * 	1. Globals
+ *	2. Headers
+ *	3. Navigations
+ *	4. Banners
+ *	5. Footers
+ *	6. app
+ *	7. Widgets
+ *	8. Custom Templates
+ */
+
+@import "../../../node_modules/bootstrap/scss/bootstrap";
+
+@import "~ng-snotify/styles/material";
+
+
+// Notification system
+
+// PACTO CSS
+@import './semear/basic-elements.scss';
+

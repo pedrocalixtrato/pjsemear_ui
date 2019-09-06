@@ -1,0 +1,93 @@
+<sma-content-layout>
+<!--    <div class="ui-g">-->
+
+<!--      <div class="ui-g-12">-->
+<!--        <h1>Lançamentos</h1>-->
+<!--      </div>-->
+
+<!--      <div class="ui-g-12 ui-fluid">-->
+<!--        <label>Descrição</label>-->
+<!--        <input pInputText type="text">-->
+<!--      </div>-->
+
+<!--      <div class="ui-g-12">-->
+<!--        <label style="display: block">Vencimento</label>-->
+<!--        <input pInputText type="text" style="width: 95px">-->
+
+<!--        <label>até</label>-->
+<!--        <input pInputText type="text" style="width: 95px">-->
+<!--      </div>-->
+
+<!--      <div class="ui-g-12">-->
+<!--        <button pButton type="submit" label="Pesquisar"></button>-->
+<!--      </div>-->
+
+<!--      <div class="ui-g-12">-->
+<!--        <table class="table" >-->
+<!--          <thead>-->
+<!--          <tr>-->
+<!--            <th scope="col">Pessoa</th>-->
+<!--            <th scope="col">Descricao</th>-->
+<!--            <th scope="col">Vencimentos</th>-->
+<!--            <th scope="col">Pagamentos</th>-->
+<!--            <th scope="col">Valor</th>-->
+<!--          </tr>-->
+<!--          </thead>-->
+<!--          <tbody *ngFor="let l of lancamentos ">-->
+<!--          <tr>-->
+<!--            <td  >{{l.pessoa}}</td>-->
+<!--            <td>{{l.descricao}}</td>-->
+<!--            <td>{{l.dataVencimento}}</td>-->
+<!--            <td>{{l.dataPagamento}}</td>-->
+<!--            <td class="col-valor-content" >-->
+<!--              <span [style.color]="l.tipo === 'DESPESA' ? 'red' : 'blue'">{{l.valor}}</span>-->
+<!--            </td>-->
+<!--            <td class="col-acoes">-->
+<!--              <a pButton icon="pi pi-pencil"></a>-->
+<!--              <button pButton icon="pi pi-trash"></button>-->
+<!--            </td>-->
+<!--          </tr>-->
+<!--          </tbody>-->
+<!--        </table>-->
+<!--        <app-kz-paginacao-->
+<!--          [qtdPorPagina]="qtdPorPagina"-->
+<!--          [totalRegistros]="lancamentosTotal.length"-->
+<!--          [qtdAdjacentes]="2"-->
+<!--          (onPaginate)="paginar($event)">-->
+<!--        </app-kz-paginacao>-->
+<!--      </div>-->
+<!--      <div class="ui-g-12">-->
+<!--        <button pButton  label="Pesquisar"></button>-->
+<!--      </div>-->
+
+<!--    </div>-->
+
+  <div class="table-wrapper pacto-shadow">
+    <sma-relatorio
+      #tableData
+      [tableTitle]="titulo"
+      [tableDescription]="subtitulo"
+      [table]="table"
+      (iconClick)="actionClickHandler($event)"
+      (rowClick)="editClickHandler($event)"
+      (btnClick)="addClickHandler()"
+    ></sma-relatorio>
+  </div>
+</sma-content-layout>
+
+<ng-template #titulo>
+  <span i18n="@@crud-atividade:title">Endereços Cadastrados</span>
+</ng-template>
+<ng-template #subtitulo>
+  <span>Gerencie os endereços cadstrados.</span>
+</ng-template>
+<!--table columns-->
+<ng-template #codigoColumnName>
+  <span>Codigo</span>
+</ng-template>
+<ng-template #logradouroColumnName>
+  <span>Logradouro</span>
+</ng-template>
+<ng-template #buttonName>
+  <span >Adicionar</span>
+</ng-template>

@@ -1,0 +1,83 @@
+
+
+/* 
+    INSET BOX
+*/
+.pacto-inset-box {
+    box-shadow: inset 0px 0px 9px 0px #f5f5f5;
+    background-color: #fbfbfb;
+    font-size: 12px;
+}
+
+/* 
+    CARD SHADOW
+*/
+.pacto-shadow {
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* 
+    OVERRIDE BOOTSTRAP INPUT LABEL
+*/
+.form-group label.control-label {
+    font-weight: bold;
+}
+
+/* 
+    OVERRIDE BOOTSTRAP CHECKBOX
+*/
+.form-group .form-check input[type=checkbox] {
+    margin-top: 5px;
+}
+/*
+    TABLE WRAPPER
+*/
+.table-wrapper {
+    background-color: #fff;
+}
+/* 
+    OVERRIDING 
+*/
+angular2-multiselect {
+    .c-btn {
+        box-shadow: none !important;
+        color: #67757c;
+        font-weight: 400;
+        border-radius: 0.25rem;
+        border-color: #ced4da;
+        padding: 4px 8px 4px 8px !important;
+
+        &.disabled {
+            background-color: #e9ecef;
+        }
+    }
+
+    .pure-checkbox {
+        display: flex;
+
+        label {
+            display: none;
+        }
+    }
+}
+
+/*
+    REMOVING 'JS charts by amcharts'
+*/
+.amcharts-chart-div a {display:none !important;}
+
+/*
+    EXTRA LARGE NG-BOOTSTRAP MODAL
+*/
+.modal-xl .modal-dialog {
+    max-width: 90% !important;
+}
+
+
+/* 
+    Use .smooth-scroll-hide-scroll to hide scrollbars.
+*/
+.smooth-scroll-hide-scroll .scrollbar-track {
+    opacity: 0 !important;
+    display: none !important;
+}

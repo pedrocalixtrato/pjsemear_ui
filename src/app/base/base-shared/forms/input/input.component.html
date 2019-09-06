@@ -1,0 +1,15 @@
+<div
+  class="form-group"
+  [ngClass]= "{'has-danger': showError}">
+  <label *ngIf="label" class="control-label"> {{label}}</label>
+  <input class="form-control"
+    type="{{type}}"
+    name="{{ name ? name : 'name' }}"
+    placeholder="{{placeholder}}"
+    [formControl]="control"
+    [required]="required"
+  >
+
+  <small *ngIf="showError && mensagem" class="form-control-feedback"> {{ mensagem }} </small>
+
+</div>

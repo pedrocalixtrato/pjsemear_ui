@@ -1,0 +1,25 @@
+
+
+$plataforma-breakpoint-large: 1440px;
+$plataforma-breakpoint-medium: 1280px;
+$plataforma-breakpoint-small: 1024px;
+
+$bootstrap-breakpoint-xl: 1200px;
+$bootstrap-breakpoint-lg: 992px;
+$bootstrap-breakpoint-md: 768px;
+$bootstrap-breakpoint-sm: 576px;
+
+
+@mixin plataformaConteudoLargura() {
+    width: calc(100vw - 460px);
+    max-width: 1230px;
+
+    @media(max-width: $plataforma-breakpoint-large) {
+        width: calc(100vw - 260px);
+    }
+}
+
+
+
+
+

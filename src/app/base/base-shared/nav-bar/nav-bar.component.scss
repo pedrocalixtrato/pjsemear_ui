@@ -1,0 +1,92 @@
+.navbar {
+  padding: 10px;
+  height: 95px;
+  //background-color: #00426b !important;
+  justify-content: center !important;
+  align-items: center !important;
+  display: flex;
+  position: relative !important;
+}
+
+.header-left-section {
+  background-color: #17191a;
+  height: 95px !important;
+  @media (min-width: 1441px) {
+    width: 200px !important;
+  }
+  width: 100px;
+  position: absolute !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  left: 0px;
+
+  .pct-logo {
+    cursor: pointer;
+    width: 46px;
+    height: 46px;
+  }
+}
+
+.text{
+  color: #000000;
+}
+
+.header-left-section {
+
+}
+
+.header-center {
+  width: calc(100vw - 260px);
+}
+
+
+pacto-global-search {
+  display: none;
+}
+
+.meus-modulos {
+  flex-grow: 1;
+}
+
+.navbar-toggle {
+  color: #fff;
+}
+
+.navbar-menu {
+  position: fixed;
+  top: 0;
+  bottom: 0px;
+  left: 0;
+  width: 210px;
+  margin: 0;
+  padding: 0;
+  z-index: 9998;
+
+  background-color: #3a3633;
+
+  list-style: none;
+}
+
+.navbar-usuario {
+  padding: 15px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #525151;
+
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #fff;
+}
+
+.navbar-menuitem {
+  padding: 15px;
+}
+
+.navbar-menuitem a {
+  color: #c0bbb7;
+  text-decoration: none;
+}
+
+.navbar-menuitem a:hover {
+  color: #fff;
+}

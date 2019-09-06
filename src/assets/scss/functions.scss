@@ -1,0 +1,8 @@
+/* Colors */
+@function colors($key) {
+  @return map-get($colors, $key);
+}
+
+@function primaryColor($palette: primary, $shade: base) {
+	@return map-get(map-get($primaryColors, $palette), $shade);
+}

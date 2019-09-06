@@ -1,0 +1,14 @@
+
+
+.pp-btn {
+    line-height: 40px;
+    padding: 0px 10px;
+    border-radius: 3px;
+    
+    &.primary {
+        text-transform: uppercase;
+        background-color: #81d742;
+        color: #fff;
+    }
+}
+

@@ -1,0 +1,37 @@
+
+/* 
+    CROSSFIT PRIMARY
+*/
+.btn.btn-primary.module-crossfit {
+    background-color: primaryColor(pacto, base);
+    border-color: primaryColor(pacto, base);
+}
+.btn.btn-primary:hover.module-crossfit {
+    box-shadow: 0 14px 26px -12px primaryColor(pacto, shadow-hover), 0 4px 23px 0 primaryColor(pacto, shadow-hover), 0 8px 10px -5px primaryColor(pacto, shadow-hover);
+}
+.btn-primary.module-crossfit:not(:disabled):not(.disabled):active, .btn-primary.module-crossfit:not(:disabled):not(.disabled).active {
+    border-color: primaryColor(pacto, base);
+    background-color: primaryColor(pacto, base);
+}
+.btn-primary.module-crossfit:not(:disabled):not(.disabled):active:focus, .btn-primary.module-crossfit:not(:disabled):not(.disabled).active:focus {
+    box-shadow: 0 0 0 0.2rem primaryColor(pacto, shadow);
+}
+
+
+/* 
+    AVALIACAO FISICA PRIMARY
+*/
+.btn.btn-primary.module-avaliacao {
+    background-color: primaryColor(pacto, base);
+    border-color: primaryColor(pacto, base);
+}
+.btn.btn-primary:hover.module-avaliacao {
+    box-shadow: 0 14px 26px -12px primaryColor(pacto, shadow-hover), 0 4px 23px 0 primaryColor(pacto, shadow-hover), 0 8px 10px -5px primaryColor(pacto, shadow-hover);
+}
+.btn-primary.module-avaliacao:not(:disabled):not(.disabled):active, .btn-primary.module-avaliacao:not(:disabled):not(.disabled).active {
+    border-color: primaryColor(pacto, base);
+    background-color: primaryColor(pacto, base);
+}
+.btn-primary.module-avaliacao:not(:disabled):not(.disabled):active:focus, .btn-primary.module-avaliacao:not(:disabled):not(.disabled).active:focus {
+    box-shadow: 0 0 0 0.2rem primaryColor(pacto, shadow);
+}

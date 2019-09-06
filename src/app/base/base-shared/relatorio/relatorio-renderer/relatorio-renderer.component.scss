@@ -1,0 +1,76 @@
+@import "~src/assets/scss/semear/plataforma-import.scss";
+
+table.table {
+  margin-bottom: 0px;
+
+  th {
+    @extend .type-btn-bold;
+    text-transform: uppercase;
+    color: $pretoPri;
+    border-top: 0px;
+
+
+    &.sortable {
+      cursor: pointer;
+      i.fa {
+        padding-left: 10px;
+        color: $pretoPri;
+      }
+    }
+  }
+
+  tr {
+    @extend .type-p-small;
+    color: $gelo04;
+  }
+
+  tr.row-clickable {
+    cursor: pointer;
+    &:hover {
+      color: $branco;
+      background-color: $azulimPri;
+    }
+  }
+
+  tr.total-row td {
+    font-weight: bold;
+  }
+
+  .column-cell.hover-cell:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+}
+
+.loading-state {
+  color: #666;
+  border: 1px solid #f1f1f1;
+  font-size: 12px;
+  background-color: #f9f9f9;
+  line-height: 100px;
+  text-align: center;
+
+  .loading-data-icon {
+    width: 30px;
+    position: relative;
+    top: -1px;
+  }
+}
+
+.empty-state {
+  color: #666;
+  border: 1px solid #f1f1f1;
+  font-size: 12px;
+  background-color: #f9f9f9;
+  line-height: 100px;
+  text-align: center;
+}
+
+.action-cell i.fa {
+  padding-right: 5px;
+  cursor: pointer;
+}
+
+.action-column {
+  width: 100px;
+}

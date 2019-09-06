@@ -1,0 +1,146 @@
+<div class="grid-filter-wrapper">
+
+  <div *ngFor="let config of config.configs">
+    <div class="options-config">
+      <div class="form-check">
+        <input class="form-check-input" [formControl]="configOptionsControl.get(config.id)" (click)="alterConfigUpdate(config.id)" type="checkbox" value="" id="{{config.id}}">
+        <label i18n="@@crud-alunos:configuracao-app" class="form-check-label" for="{{config.id}}">
+          <ng-container [ngTemplateOutlet]="config.label"></ng-container>
+        </label>
+      </div>
+    </div>
+  </div>
+  <ng-container *ngFor="let filter of config.filters">
+    
+    <ng-container [ngSwitch]="filter.type">
+      
+      
+      <!-- SELECT MANY -->
+      <div class="filter filter-many" *ngSwitchCase="GridFilterType.MANY">
+        <div class="filter-title">
+          <span (click)="filterClick(filter)" class='aux-wrapper'>
+            <i class="fa fa-caret-right" [hidden]="filterCollapseStatus[filter.name]" ></i>
+            <i class="fa fa-caret-down" [hidden]="!filterCollapseStatus[filter.name]"></i>
+            <ng-container *ngTemplateOutlet="filter.label"></ng-container>
+          </span>
+          <span class="clear-filter" *ngIf="filterHasValue(filter)" (click)="clearFilter($event, filter)" i18n="@@component-relatorio:limpar"> Limpar </span>
+        </div>
+        
+        <div class="filter-content" *ngIf="filterCollapseStatus[filter.name]">
+          
+          <div class="filter-alternative-control form-check" *ngIf="filter.alternativeOptions">
+            <input id="{{filter.name}}-id" type="checkbox" class="form-check-input" [formControl]="alternativeOptionsControl">
+            <label for="{{filter.name}}-id" class="form-check-label">
+              <ng-container *ngTemplateOutlet="filter.alternativeOptionsLabel"></ng-container>
+            </label>
+          </div>
+
+          <div class="filter-input">
+            <input type="text"
+              [formControl]="filterManyFilterControls[filter.name]"
+              placeholder="Filtrar por nome..."
+              i18n-placeholder="@@component-relatorio:filtrar-nome:placeholder"
+              class="form-control form-control-sm">
+              <i class="fa fa-times" (click)="clearFilterManyFilter($event, filter)"></i>
+          </div>          
+
+          <div class="options-wrapper">
+          </div>
+          
+        </div>
+      </div>
+      <!-- SELECT MANY END -->
+      
+      <!-- DATE POINT -->
+      <div class="filter filter-date-point" *ngSwitchCase="GridFilterType.DATE_POINT">
+        <div class="filter-title">
+          <span (click)="filterClick(filter)" class="aux-wrapper">
+            <i class="fa fa-caret-right" [hidden]="filterCollapseStatus[filter.name]"></i>
+            <i class="fa fa-caret-down" [hidden]="!filterCollapseStatus[filter.name]"></i>
+            <ng-container *ngTemplateOutlet="filter.label"></ng-container>
+          </span>
+          <span class="clear-filter" *ngIf="filterDateControls[filter.name].value" (click)="clearFilter($event, filter)" i18n="@@component-relatorio:limpar"> Limpar </span>
+        </div>
+        <div class="filter-content" *ngIf="filterCollapseStatus[filter.name]">
+        </div>
+      </div>
+      <!-- DATE POINT END -->
+
+      <!-- DATE MONTH AND YEAR -->
+      <div class="filter filter-date-point" *ngSwitchCase="GridFilterType.DATE_MONTH_YEAR">
+        <div class="filter-title">
+          <span (click)="filterClick(filter)" class="aux-wrapper">
+            <i class="fa fa-caret-right" [hidden]="filterCollapseStatus[filter.name]"></i>
+            <i class="fa fa-caret-down" [hidden]="!filterCollapseStatus[filter.name]"></i>
+            <ng-container *ngTemplateOutlet="filter.label"></ng-container>
+          </span>
+        </div>
+        <div class="filter-content" *ngIf="filterCollapseStatus[filter.name]">
+          <div class="monthYear">
+            <div class="container">
+              <div class="row">
+                <div class="col-6">
+                <select class="form-control form-control-sm" [formControl]="formGroup.get('dateSelected')" (change)="changeMonth()" >
+                  <option [value]="mesAtual" > Mês Atual</option>
+                  <option value="{{ mes.id }}" *ngFor="let mes of mesData"> {{ mes.mes }} </option>
+                </select>
+                </div>
+                <div class="col-6">
+                <select class="form-control form-control-sm" [formControl]="formGroup.get('anoSelected')" (change)="changeYear()" >
+                  <option [value]="anoAtual" > {{anoAtual}}</option>
+                  <option value="{{ ano.ano }}" *ngFor="let ano of anoData"> {{ano.ano}} </option>
+                </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- DATE MONTH AND YEAR END -->
+      
+    </ng-container>
+    <!-- SWITCH ENDS -->
+    
+  </ng-container>
+  <!-- FILTER NGFOR ENDS -->
+
+  <!-- COLUMN CONFIG -->
+  <div class="filter">
+    <div class="filter-title" (click)="filterClick({name: 'columns'})">
+      <span class="aux-wrapper">
+        <i class="fa fa-caret-right" [hidden]="filterCollapseStatus['columns']"></i>
+        <i class="fa fa-caret-down" [hidden]="!filterCollapseStatus['columns']"></i>
+        <span i18n="@@component-relatorio:colunas-visiveis"> Colunas visíveis </span>
+      </span>
+      <!-- <span class="clear-filter" *ngIf="filterDateControls[filter.name].value" (click)="clearFilter(filter)"> Limpar </span> -->
+    </div>
+    <div class="filter-content" *ngIf="filterCollapseStatus['columns']">
+      
+      <div class="options-wrapper">
+        <span
+          (click)="visibleColumnClickHandler(column)"
+          pactoModuleClass
+          class="option"
+          [ngClass]="{'selected': columnIsVisible(column)}"
+          *ngFor="let column of columnsConfig">
+          <ng-container *ngTemplateOutlet="column.titulo"></ng-container>
+        </span>
+      </div>      
+
+    </div>        
+  </div>  
+  <!-- COLUMN CONFIG ENDS -->
+
+  <div class="search-button">
+    <ng-template #buscarLabel i18n="@@component-relatorio:buscar">
+      <i class="fa fa-search"></i>
+      Buscar
+    </ng-template>
+    <button class="btn btn-primary search-btn-filter" pactoModuleClass (click)="searchClickHandler()">
+      <i class="fa fa-search"></i>
+      <span i18n="@@component-relatorio:buscar"> Buscar </span>
+    </button>
+
+  </div>
+  
+</div>
